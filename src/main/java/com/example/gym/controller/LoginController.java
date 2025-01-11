@@ -94,7 +94,7 @@ public class LoginController {
         String username = ((String) registerRequest.get("username")).trim();
         String email = ((String) registerRequest.get("email")).trim();
         String pass = (String) registerRequest.get("password");
-        int otp = Integer.parseInt(((String) registerRequest.get("username")).trim());
+        int otp = Integer.parseInt(((String) registerRequest.get("otp")).trim());
         long password = 0;
         
         for(int i=0;i<pass.length();i++) {
@@ -145,6 +145,8 @@ public class LoginController {
         	password = mul(password, 256);
         	password = add(password, l);
         }
+        
+        
 
         if (userRepository.findByUsername(username).isPresent() || userRepository.findByEmail(email).isPresent()) {
         	Map<String, String> response = new HashMap<>();
@@ -157,9 +159,14 @@ public class LoginController {
         user.setEmail(email);
         user.setPassword(password);
         user.setSecret(0L);
-        
-        send(email);
-
+        try {
+        	send(email);
+        }
+        catch(Exception e) {
+        	Map<String, String> response = new HashMap<>();
+            response.put("message", "invalid email");
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
         Map<String, String> response = new HashMap<>();
         response.put("message", "OTP");
         
@@ -171,6 +178,7 @@ public class LoginController {
 		int n = 0;
         for(int i=0;i<6;i++) {
         	int num = rand.nextInt(10);
+        	if(n == 0 && num == 0) num = 1;
         	n *= 10;
         	n += num;
         }

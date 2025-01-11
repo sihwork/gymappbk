@@ -43,3 +43,7 @@ server:
     #username: ${u}
     #password: ${p}
     #driverClassName: org.postgresql.Driver
+    
+    
+    
+#ubuntu@ip-172-31-9-81:~/gymappbk$ mysql -h 172.31.9.81 -u root -p
