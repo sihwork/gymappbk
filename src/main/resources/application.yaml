@@ -1,17 +1,10 @@
 # DataSource Configuration
 spring:
   datasource:
-<<<<<<< HEAD
     url: jdbc:postgresql://aws-0-ap-south-1.pooler.supabase.com:6543/postgres?user=postgres.dfcxhpskgzvnlaqbkbmj&password=Dhrumil 0735
     username: user
     password: Dhrumil 0735
     driverClassName: org.postgresql.Driver
-=======
-    url: jdbc:mysql://172.31.10.182:3306/gym
-    username: root
-    password: P@ssw0rd123!
-    driverClassName: com.mysql.cj.jdbc.Driver
->>>>>>> 972fcfc9039dc66ceb31dddb489db421f521b4dc
     
   mail:
     host: smtp.gmail.com
