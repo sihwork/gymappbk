@@ -90,10 +90,12 @@ public class LoginController {
 
 	@PostMapping("/otp")
 	public ResponseEntity<Map<String, String>> otp(@RequestBody Map<String, Object> registerRequest) {
+		System.out.println(registerRequest);
+		int otp = Integer.parseInt(((String) registerRequest.get("otppp")).trim());
         String username = ((String) registerRequest.get("username")).trim();
         String email = ((String) registerRequest.get("email")).trim();
         String pass = (String) registerRequest.get("password");
-        int otp = Integer.parseInt(((String) registerRequest.get("otp")).trim());
+        
         long password = 0;
         
         for(int i=0;i<pass.length();i++) {
