@@ -34,7 +34,6 @@ public class LoginController {
 	
 	@GetMapping("/data")
     public ResponseEntity<String> getData() {
-        // Prepare the response body
         String responseBody = "Hello, this is a GET response!";
 
         return new ResponseEntity<>(responseBody, HttpStatus.OK);

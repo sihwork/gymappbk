@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="'Edit ' + ${tableName}"></title>
+</head>
+<body>
+    <h1 th:text="'Edit Data for ' + ${tableName}"></h1>
+
+    <form th:action="@{/database/table/{tableName}/update(tableName=${tableName})}" method="post">
+        <!-- Hidden input to store the ID of the row being edited -->
+        <input type="hidden" th:name="id" th:value="${row['id']}" />
+
+        <div th:each="column : ${columns}">
+            <label th:text="${column}"></label>
+            <input type="text" th:name="${column}" th:value="${row[column]}" />
+        </div>
+
+        <button type="submit">Update</button>
+    </form>
+
+    <br>
+    <a th:href="@{/database/table/{tableName}(tableName=${tableName})}">Back to Table</a>
+</body>
+</html>
